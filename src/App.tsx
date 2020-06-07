@@ -1,25 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState, useEffect, useCallback } from "react";
+import { createGlobalStyle } from "styled-components";
+const GlobalStyle = createGlobalStyle`
+  *{
+    box-sizing:border-box;
+  }
+  body,p,ul,li{
+    padding:0;
+    margin:0;
+  }
+  li{
+    list-style:none
+  }
+`;
+interface ITodo {
+  name: String;
+  done: Boolean;
+}
 function App() {
+  const [todos, setToDos] = useState<ITodo[]>([]);
+  useEffect(() => {
+    const todoList = localStorage.getItem("todo");
+    if (todoList) {
+      setToDos(JSON.parse(todoList));
+    }
+  }, []);
+  const saveToDos = useCallback(() => {
+    localStorage.setItem("todo", JSON.stringify(todos));
+  }, [todos]);
+  const handleSubmitToDo = useCallback((e) => {}, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <div className="App"></div>
+    </>
   );
 }
 
