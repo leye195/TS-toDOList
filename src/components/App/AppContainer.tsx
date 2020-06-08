@@ -10,7 +10,7 @@ interface ITodo {
 function AppContainer() {
   const [todos, setToDos] = useState<ITodo[]>([]);
   const [todo, setToDo] = useState<string>("");
-  const [isOpen, setOpen] = useState<boolean>(false);
+  const [isOpen, setOpen] = useState<boolean>(true);
   const [isNight, setNight] = useState<boolean>(false);
   const [selected, setSelect] = useState<number>(0);
   useEffect(() => {

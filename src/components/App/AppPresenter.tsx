@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
+import { flex } from "../../mixin";
 import reset from "styled-reset";
 
 import {
@@ -40,16 +41,14 @@ const Container = styled.main`
   min-height: 80vh;
 `;
 const Form = styled.form`
-  display: flex;
-  justify-content: center;
+  ${flex("row", "none", "center")}
 `;
 const InputContainer = styled.div`
   padding: 10px;
   font-size: 1.4rem;
   border-radius: 10px;
   background-color: white;
-  display: flex;
-  align-items: center;
+  ${flex("row", "center", "none")}
   width: 60vw;
   box-shadow: 2px 2px 8px 1px #08080845;
   svg {
@@ -85,27 +84,26 @@ const ToDo = styled.article`
   height: 10vh;
   padding: 10px;
   border-bottom: 1px solid #e3e3e3;
-  display: flex;
-  align-items: center;
+  ${flex("row", "center", "none")}
   &:hover .delete-container {
     opacity: 1;
   }
 `;
 const Title = styled.p<{ done: boolean }>`
   text-decoration: ${(props) => (props.done ? "line-through" : "")};
-  color: ${(props) => (props.done ? "#e3e3e3" : "black")};
+  color: ${(props) => (props.done ? props.theme.greyColor : "black")};
 `;
 const CheckBox = styled.div<{ done: boolean }>`
   height: 40px;
   width: 40px;
-  background-color: ${(props) => (props.done ? "white" : "#cecece61")};
+  background-color: ${(props) =>
+    props.done ? "white" : props.theme.darkgreyColor};
   border-radius: 50%;
-  border: 1px solid ${(props) => (props.done ? "#1abc9c" : "white")};
+  border: 1px solid
+    ${(props) => (props.done ? props.theme.greenColor : "white")};
   margin-right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: ${(props) => (props.done ? "#1abc9c" : "white")};
+  ${flex("row", "center", "center")}
+  color: ${(props) => (props.done ? props.theme.greenColor : "white")};
 `;
 const DeleteContainer = styled.div`
   position: absolute;
@@ -113,15 +111,13 @@ const DeleteContainer = styled.div`
   font-size: 1.2rem;
   opacity: 0;
   & svg {
-    color: #ff7675;
+    color: ${(props) => props.theme.redColor};
   }
 `;
 const ControlContainer = styled.div`
   padding: 10px;
-  border-bottom: 1px solid #e3e3e3;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  border-bottom: 1px solid ${(props) => props.theme.greyColor};
+  ${flex("row", "center", "space-between")}
 `;
 const CategoryContainer = styled.div`
   display: flex;
@@ -129,7 +125,8 @@ const CategoryContainer = styled.div`
 `;
 const Category = styled.p<{ selected: boolean }>`
   padding: 10px;
-  border: ${(props) => (props.selected ? "1px solid #00b894" : "")};
+  border: ${(props) =>
+    props.selected ? `1px solid ${props.theme.greenColor}` : ""};
   cursor: pointer;
 `;
 interface ITodo {

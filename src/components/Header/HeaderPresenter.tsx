@@ -1,16 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-
+import { flex } from "../../mixin";
 const Container = styled.header<{ isNight: boolean }>`
   height: 10vh;
-  display: flex;
-  align-items: center;
+  ${flex("row", "center", "space-between")}
   border-bottom: 1px solid #b9b9b9;
   margin-bottom: 10px;
   background-color: white;
-  justify-content: space-between;
   background: ${(props) =>
-    props.isNight ? "rgb(54, 53, 55)" : "rgb(255, 255, 255)"};
+    props.isNight ? props.theme.dark : "rgb(255, 255, 255)"};
 `;
 const Title = styled.h5<{ isNight: boolean }>`
   padding-left: 10px;
@@ -28,15 +26,13 @@ const Button = styled.button<{ isNight: boolean }>`
   width: 100%;
   height: 100%;
   border-radius: 20px;
-  border: 1px solid #e3e3e3;
+  border: 1px solid ${(props) => props.theme.greyColor};
   background-image: ${(props) =>
     props.isNight
       ? "linear-gradient(to right, #667195 0%, #00269c 100%)"
       : "linear-gradient(to right, #e7feff 2%, #f4f5e2 100%)"};
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  ${flex("row", "center", "center")}
   color: ${(props) => (props.isNight ? "white" : "#4c4c4c")};
   font-weight: 800;
 `;
