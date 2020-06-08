@@ -4,7 +4,7 @@ TypeScript 활용 Simple React ToDo-List 웹 (TypeScript 연습)
 
 ### 데모
 
-[[데모]]()
+[[데모]](https://leye195.github.io/TS-toDOList/)
 
 ### 소득
 
