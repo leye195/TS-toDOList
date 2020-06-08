@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container = styled.header`
+const Container = styled.header<{ isNight: boolean }>`
   height: 10vh;
   display: flex;
   align-items: center;
@@ -9,10 +9,13 @@ const Container = styled.header`
   margin-bottom: 10px;
   background-color: white;
   justify-content: space-between;
+  background: ${(props) =>
+    props.isNight ? "rgb(54, 53, 55)" : "rgb(255, 255, 255)"};
 `;
-const Title = styled.h5`
+const Title = styled.h5<{ isNight: boolean }>`
   padding-left: 10px;
   font-weight: bold;
+  color: ${(props) => (props.isNight ? "white" : "black")};
 `;
 const ButtonContainer = styled.div`
   height: 60%;
@@ -44,8 +47,8 @@ interface IProps {
 }
 function HeaderPresenter({ title, isNight, handleToggle }: IProps) {
   return (
-    <Container>
-      <Title>{title}</Title>
+    <Container isNight={isNight}>
+      <Title isNight={isNight}>{title}</Title>
       <ButtonContainer>
         <Button isNight={isNight} onClick={handleToggle}>
           {isNight ? "Night On" : "Night Off"}

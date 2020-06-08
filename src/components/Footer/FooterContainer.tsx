@@ -1,6 +1,9 @@
 import React from "react";
 import FooterPresenter from "./FooterPresenter";
-function FooterContainer() {
-  return <FooterPresenter />;
+interface IProps {
+  isNight: boolean;
+}
+function FooterContainer({ isNight }: IProps) {
+  return <FooterPresenter isNight={isNight} />;
 }
 export default FooterContainer;

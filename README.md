@@ -1,7 +1,13 @@
-# ToDo-List with TypeScript, React
+# ToDo-List with TypeScript, React, Styled-Components
 
-TypeScript 활용 Simple React ToDo-List 웹 만들어보기 (TypeScript 연습)
+TypeScript 활용 Simple React ToDo-List 웹 (TypeScript 연습)
 
-## ToDo
+### 데모
 
-- Night Shift mode
+[[데모]]()
+
+### 소득
+
+- props-Types 없이 TS에서 변수 타입 체크
+- @types (Definitely Typed)로 정의된 lib 사용
+- tsconfig 활용 방법

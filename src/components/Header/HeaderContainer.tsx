@@ -2,16 +2,11 @@ import React, { useState, useCallback } from "react";
 import HeaderPresenter from "./HeaderPresenter";
 interface IProps {
   title: string;
+  isNight: boolean;
+  handleToggle: (e: React.SyntheticEvent<HTMLButtonElement>) => void;
 }
-function HeaderContainer({ title }: IProps) {
-  const [isNight, setNight] = useState<boolean>(false);
-  const handleToggle = useCallback(
-    (e) => {
-      console.log(isNight);
-      setNight(!isNight);
-    },
-    [isNight]
-  );
+function HeaderContainer({ title, isNight, handleToggle }: IProps) {
+  //const [isNight, setNight] = useState<boolean>(false);
   return (
     <HeaderPresenter
       title={title}
